@@ -60,10 +60,13 @@ class CarpoolService {
   bool _localUsersLoaded = false;
   static const _localUsersKey = 'carpool_local_users_v1';
 
+<<<<<<< HEAD
   // Cuenta administrativa reservada para la sustentación. No puede crearse desde el registro público.
   static const adminEmail = 'danipinqui1@gmail.com';
   static const adminPassword = '1234567890';
 
+=======
+>>>>>>> 41950695084957e6af109babcd25a1d3eef53a78
   AppUser? get currentUser => _currentUser;
 
   Future<AuthResult> login(String email, String password) async {
@@ -167,8 +170,11 @@ class CarpoolService {
         role: role,
         status: 'active',
         emailVerified: true,
+<<<<<<< HEAD
         sex: sex,
         program: normalizedProgram.isEmpty ? null : normalizedProgram,
+=======
+>>>>>>> 41950695084957e6af109babcd25a1d3eef53a78
         canPublish: role == 'driver',
         publishBlockers: const [],
       );
@@ -201,6 +207,7 @@ class CarpoolService {
     return _applyAuth(response);
   }
 
+<<<<<<< HEAD
 
   Future<List<AppUser>> listLocalUsers() async {
     _ensureOpen();
@@ -213,6 +220,8 @@ class CarpoolService {
     return List.unmodifiable(users);
   }
 
+=======
+>>>>>>> 41950695084957e6af109babcd25a1d3eef53a78
   Future<AppUser> refreshUser() async {
     final user = _requireUser();
     if (isLocal) return user;
@@ -640,6 +649,7 @@ class CarpoolService {
     _localUsersLoaded = true;
     final prefs = await SharedPreferences.getInstance();
     final raw = prefs.getString(_localUsersKey);
+<<<<<<< HEAD
     if (raw != null && raw.isNotEmpty) {
       try {
         final decoded = jsonDecode(raw);
@@ -689,6 +699,36 @@ class CarpoolService {
       ),
     );
     await _saveLocalUsers();
+=======
+    if (raw == null || raw.isEmpty) return;
+    try {
+      final decoded = jsonDecode(raw);
+      if (decoded is! Map<String, dynamic>) return;
+      for (final entry in decoded.entries) {
+        final value = entry.value;
+        if (value is! Map) continue;
+        final map = Map<String, dynamic>.from(value);
+        final hash = map['password_hash'];
+        final userMap = map['user'];
+        if (hash is! String || userMap is! Map) continue;
+        final u = Map<String, dynamic>.from(userMap);
+        final user = AppUser(
+          id: u['id'] as String,
+          fullName: u['full_name'] as String,
+          email: u['email'] as String,
+          role: u['role'] as String,
+          status: u['status'] as String,
+          emailVerified: u['email_verified'] == true,
+          canPublish: u['can_publish'] == true,
+          pendingLegal: List<String>.from(u['pending_legal'] as List? ?? const []),
+          publishBlockers: List<String>.from(u['publish_blockers'] as List? ?? const []),
+        );
+        _localUsers[entry.key] = (passwordHash: hash, user: user);
+      }
+    } catch (_) {
+      // Si los datos locales están dañados, se ignoran y el usuario puede registrarse de nuevo.
+    }
+>>>>>>> 41950695084957e6af109babcd25a1d3eef53a78
   }
 
   Future<void> _saveLocalUsers() async {
@@ -705,8 +745,11 @@ class CarpoolService {
           'role': user.role,
           'status': user.status,
           'email_verified': user.emailVerified,
+<<<<<<< HEAD
           'sex': user.sex,
           'program': user.program,
+=======
+>>>>>>> 41950695084957e6af109babcd25a1d3eef53a78
           'can_publish': user.canPublish,
           'pending_legal': user.pendingLegal,
           'publish_blockers': user.publishBlockers,

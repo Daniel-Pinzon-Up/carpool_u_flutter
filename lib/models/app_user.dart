@@ -6,8 +6,11 @@ class AppUser {
     required this.role,
     required this.status,
     required this.emailVerified,
+<<<<<<< HEAD
     this.sex,
     this.program,
+=======
+>>>>>>> 41950695084957e6af109babcd25a1d3eef53a78
     this.canPublish = false,
     this.pendingLegal = const [],
     this.publishBlockers = const [],
@@ -19,8 +22,11 @@ class AppUser {
   final String role;
   final String status;
   final bool emailVerified;
+<<<<<<< HEAD
   final String? sex;
   final String? program;
+=======
+>>>>>>> 41950695084957e6af109babcd25a1d3eef53a78
   final bool canPublish;
   final List<String> pendingLegal;
   final List<String> publishBlockers;
@@ -82,8 +88,11 @@ class AppUser {
       status: status,
       // MeOut no envía email_verified; el estado indica si falta verificarlo.
       emailVerified: status != 'pending_email',
+<<<<<<< HEAD
       sex: json['sex'] is String ? json['sex'] as String : null,
       program: json['program'] is String ? json['program'] as String : null,
+=======
+>>>>>>> 41950695084957e6af109babcd25a1d3eef53a78
       canPublish: json['can_publish'] == true,
       pendingLegal: List.unmodifiable(pendingLegal),
       publishBlockers: List.unmodifiable(

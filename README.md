@@ -107,6 +107,7 @@ flutter build apk --release --target-platform android-arm,android-arm64,android-
 ```
 
 El APK generado por `flutter run` para un emulador puede estar compilado solo para x86_64 y no debe usarse como APK de entrega para un teléfono ARM. Usa siempre el APK generado por el script anterior.
+<<<<<<< HEAD
 
 ## Flujo multiusuario para sustentación
 
@@ -131,3 +132,5 @@ El rol Administrador no aparece en el registro público. Para la sustentación e
 - Contraseña: `1234567890`
 
 Esta cuenta permite abrir el panel administrativo local y revisar usuarios, viajes y solicitudes. Los usuarios normales solo pueden registrarse como Pasajero o Conductor.
+=======
+>>>>>>> 41950695084957e6af109babcd25a1d3eef53a78

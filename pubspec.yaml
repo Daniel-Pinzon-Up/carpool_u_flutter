@@ -1,7 +1,13 @@
 name: carpool_up_movil
+<<<<<<< HEAD
 description: 'Aplicación móvil Flutter de Carpool UP para pasajero, conductor y administrador.'
 publish_to: none
 version: 1.2.0+4
+=======
+description: 'Aplicación móvil Flutter de Carpool UP para pasajero y conductor.'
+publish_to: none
+version: 1.1.1+3
+>>>>>>> 41950695084957e6af109babcd25a1d3eef53a78
 
 environment:
   sdk: '>=3.8.0 <4.0.0'
